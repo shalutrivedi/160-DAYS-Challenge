@@ -1,0 +1,19 @@
+class Solution {
+  public:
+    int countPairs(vector<int> &arr, int target) {
+        unordered_map<int, int> count_map; // To store frequencies of elements
+        int pair_count = 0;
+        
+        for (int num : arr) {
+            int complement = target - num; // Find the complement for the current number
+            if (count_map.find(complement) != count_map.end()) {
+                pair_count += count_map[complement]; // Add the frequency of the complement
+            }
+            count_map[num]++; // Update the frequency of the current number
+        }
+        
+        return pair_count;
+    }
+};
+
+
